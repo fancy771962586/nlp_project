@@ -108,6 +108,6 @@ KNOWLEDGE_VECTOR_DATABASE = FAISS.from_documents(
 
 
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
