@@ -1,4 +1,6 @@
-EMBEDDING_MODEL_NAME = "thenlper/gte-small"
+# EMBEDDING_MODEL_NAME = "thenlper/gte-small"
+EMBEDDING_MODEL_NAME =  "Alibaba-NLP/gte-large-en-v1.5"
+RERANKER_NAME = "jinaai/jina-colbert-v2"
 MARKDOWN_SEPARATORS = [
     "\n#{1,6} ",
     "```\n",

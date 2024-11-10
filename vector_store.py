@@ -3,63 +3,48 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from nltk.corpus.reader import documents
 from transformers import AutoTokenizer
 from tqdm import tqdm
-import datasets
-import matplotlib
 from tqdm.notebook import tqdm
-import pandas as pd
 from typing import Optional, List, Tuple
 from langchain_community.vectorstores.utils import DistanceStrategy
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.embeddings import OpenAIEmbeddings
-from langchain.text_splitter import CharacterTextSplitter
-from langchain_community.vectorstores import milvus
+from langchain_milvus import Milvus
 from langchain_community.document_loaders import TextLoader
-from transformers.pipelines.audio_utils import chunk_bytes_iter
+from models import get_embedding_model, get_rerank_model
+from configs import EMBEDDING_MODEL_NAME,MARKDOWN_SEPARATORS,SEARCH_PARAMS
+from loguru import logger
 
-from cfg import EMBEDDING_MODEL_NAME,MARKDOWN_SEPARATORS,SEARCH_PARAMS
-
-
-
-def get_embedding():
-    embedding_model = HuggingFaceEmbeddings(
-        model_name=EMBEDDING_MODEL_NAME,
-        multi_process=True,
-        model_kwargs={"device": "cpu"},
-        encode_kwargs={"normalize_embeddings": True},  # Set `True` for cosine similarity
-    )
-    return embedding_model
 
 class VectorStore:
     def __init__(self,ip,port,db_name,collection_name):
-        embedding_model = get_embedding()
+        embedding_model = get_embedding_model()
         # embedding_model = OpenAIEmbeddings()
         connection = {"host": ip, "port": port, "db_name": db_name}
-        self.vector_store = milvus.Milvus(embedding_function=embedding_model,
+        self.vector_store = Milvus(embedding_function=embedding_model,
                                           collection_name=collection_name,
                                           auto_id=True,
                                           connection_args=connection,
                                           primary_field='ID',
-                                          drop_old=True,
+                                          drop_old=False,
                                           text_field='Content',)
 
     # Retrieve from v_db
     def search_documents(self, question, expr=None, top_k=5, distance=SEARCH_PARAMS):
+        logger.debug(f'search documents matched with "{question}"')
         return self.vector_store.similarity_search_with_score(query=question, expr=expr, k=top_k, kwargs=distance)
 
     def insert_documents(self, docs):
         texts = [d.page_content for d in docs]
         metadata = [d.metadata for d in docs]
+        logger.debug(f'inserting {len(docs)} documents...')
         return self.vector_store.add_texts(texts=texts, metadatas=metadata)
 
-def get_vector_store():
-    return VectorStore('localhost', 19530, "default", 'test')
+    def delete_documents_by_ids(self, ids:list[str]):
+        self.vector_store.delete(ids)
 
 
+def get_vector_store(collection_name):
+    logger.info(f'Current database collection: {collection_name}')
+    return VectorStore('localhost', 19530, "default", collection_name)
 
-# RAW_KNOWLEDGE_BASE = [LangchainDocument(page_content=doc["text"],
-#                                         metadata={"source": doc["source"]}) for doc in tqdm(ds)]
-#
-#
 def split_documents(chunk_size: int, knowledge_base: List[LangchainDocument],
     tokenizer_name: Optional[str] = EMBEDDING_MODEL_NAME,) -> List[LangchainDocument]:
     """
@@ -73,7 +58,6 @@ def split_documents(chunk_size: int, knowledge_base: List[LangchainDocument],
         strip_whitespace=True,
         separators=MARKDOWN_SEPARATORS,
     )
-    print(knowledge_base)
     docs_processed = []
     for doc in tqdm(knowledge_base):
         docs_processed += text_splitter.split_documents([doc])
@@ -88,29 +72,37 @@ def split_documents(chunk_size: int, knowledge_base: List[LangchainDocument],
 
     return docs_processed_unique
 
+def show_doc_content(relevant_docs):
+    for i, doc in enumerate(relevant_docs):
+        print(f"Document {i}------------------------------------------------------------")
+        print(doc[0].page_content)
+
 
 def split_text_files(txt_files:list[any])-> List[LangchainDocument]:
     docs = []
     for txt_file in txt_files:
-        loader = TextLoader(txt_file)
+        loader = TextLoader(txt_file,encoding='utf-8')
         docs.extend(loader.load())
-    return split_documents(chunk_size = 50, knowledge_base=docs)
+    return split_documents(chunk_size = 100, knowledge_base=docs)
 
 
-
+def rerank(question,relevant_docs:list[LangchainDocument],num_docs_final):
+        print("=> Reranking documents...")
+        rerank_model = get_rerank_model()
+        relevant_docs = rerank_model.rerank(question, relevant_docs, k=num_docs_final)
+        relevant_docs = [doc["content"] for doc in relevant_docs]
+        return relevant_docs
 
 
 
 if __name__ == '__main__':
-    vector_db = get_vector_store()
+    vector_db = get_vector_store('test')
 
-    txt = ['ame.txt']
-    # a=split_documents(100,documents)
-    # print(a)
-    # text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=20)
-    # docs = text_splitter.split_documents(documents)
-    # print(docs[0].page_content)
-    d = split_text_files(txt)
-    print(d)
-    print(vector_db.insert_documents(d))
-    print(vector_db.search_documents('123',None,5))
+    # txt = ['ame.txt']
+
+    # d = split_text_files(txt)
+    # print(d)
+    # vector_db.insert_documents(d)
+    # print(vector_db.search_documents('what is the name of the author',None,10))
+    results = vector_db.search_documents('what is the name of the author', None, 5)
+    show_doc_content(results)
