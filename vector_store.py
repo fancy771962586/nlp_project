@@ -89,7 +89,7 @@ def split_documents(chunk_size: int, knowledge_base: List[LangchainDocument],
     return docs_processed_unique
 
 
-def split_text_files(txt_files):
+def split_text_files(txt_files:list[any])-> List[LangchainDocument]:
     docs = []
     for txt_file in txt_files:
         loader = TextLoader(txt_file)
