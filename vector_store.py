@@ -1,6 +1,7 @@
 from langchain.docstore.document import Document as LangchainDocument
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from nltk.corpus.reader import documents
+from sqlalchemy import false
 from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import Optional, List, Tuple
@@ -8,7 +9,7 @@ from langchain_community.vectorstores.utils import DistanceStrategy
 from langchain_milvus import Milvus
 from langchain_community.document_loaders import TextLoader
 from models import get_embedding_model, get_rerank_model
-from configs import MARKDOWN_SEPARATORS,SEARCH_PARAMS,DENSE_EMBEDDING_MODEL_NAME
+from configs import MARKDOWN_SEPARATORS,SEARCH_PARAMS,DENSE_EMBEDDING_MODEL_NAME,SPARSE_EMBEDDUNG_MODEL_NAME
 from loguru import logger
 
 
@@ -26,10 +27,10 @@ class VectorStore:
                                           auto_id=True,
                                           connection_args=connection,
                                           primary_field='ID',
-                                          drop_old=is_new,
+                                          drop_old=False,
                                           text_field='Content',)
 
-    def split_documents(self,chunk_size: int, knowledge_base: List[LangchainDocument]) -> List[LangchainDocument]:
+    def _split_documents(self,chunk_size: int, knowledge_base: List[LangchainDocument]) -> List[LangchainDocument]:
         """
         Split documents into chunks of maximum size `chunk_size` tokens and return a list of documents.
         """
@@ -61,7 +62,7 @@ class VectorStore:
         for txt_file in txt_files:
             loader = TextLoader(txt_file, encoding='utf-8')
             docs.extend(loader.load())
-        return self.split_documents(chunk_size=100, knowledge_base=docs)
+        return self._split_documents(chunk_size=100, knowledge_base=docs)
 
     # Retrieve from v_db
     def search_documents(self, question, expr=None, top_k=5, distance=SEARCH_PARAMS):
@@ -87,9 +88,14 @@ def get_vector_store(collection_name, dbtype, is_new=False):
     return VectorStore('localhost', 19530, "default", collection_name, dbtype, is_new)
 
 def show_doc_content(relevant_docs):
+    results = []
+    output = None
     for i, doc in enumerate(relevant_docs):
+        results.append(doc[0].page_content)
         print(f"Document {i}------------------------------------------------------------")
         print(doc[0].page_content)
+        output = '\n'.join(results)
+    return output
 
 def rerank(question,relevant_docs:list[LangchainDocument],num_docs_final):
         print("=> Reranking documents...")
@@ -101,12 +107,18 @@ def rerank(question,relevant_docs:list[LangchainDocument],num_docs_final):
 
 
 if __name__ == '__main__':
-    vector_db = get_vector_store('test', 'dense', is_new=True)
-    txt = ['ame.txt']
-
-    d = vector_db.split_text_files(txt)
+    import time
+    search_latency_fmt = "search latency = {:.4f}s"
+    start_time = time.time()
+    vector_db = get_vector_store('test', 'dense', is_new=False)
+    # txt = ['ame.txt']
+    #
+    # d = vector_db.split_text_files(txt)
     # print(d)
-    vector_db.insert_documents(d)
+    # vector_db.insert_documents(d)
     # print(vector_db.search_documents('what is the name of the author',None,10))
     results = vector_db.search_documents('what is the name of the author', None, 5)
+    end_time = time.time()
+
     show_doc_content(results)
+    print(search_latency_fmt.format(end_time - start_time))

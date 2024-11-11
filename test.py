@@ -22,9 +22,9 @@ num_entities, dim = 3000, 8
 # #
 # # Note: the `using` parameter of the following methods is default to "default".
 # print(fmt.format("start connecting to Milvus"))
-# connections.connect("default", host="localhost", port="19530")
+connections.connect("default", host="localhost", port="19530")
 #
-# has = utility.has_collection("hello_milvus")
+has = utility.has_collection("hello_milvus")
 # print(f"Does collection hello_milvus exist in Milvus: {has}")
 #
 # #################################################################################
@@ -40,16 +40,16 @@ num_entities, dim = 3000, 8
 # # +-+------------+------------+------------------+------------------------------+
 # # |3|"embeddings"| FloatVector|     dim=8        |  "float vector with dim 8"   |
 # # +-+------------+------------+------------------+------------------------------+
-# fields = [
-#     FieldSchema(name="pk", dtype=DataType.VARCHAR, is_primary=True, auto_id=False, max_length=100),
-#     FieldSchema(name="random", dtype=DataType.DOUBLE),
-#     FieldSchema(name="embeddings", dtype=DataType.FLOAT_VECTOR, dim=dim)
-# ]
+fields = [
+    FieldSchema(name="pk", dtype=DataType.VARCHAR, is_primary=True, auto_id=False, max_length=100),
+    FieldSchema(name="random", dtype=DataType.DOUBLE),
+    FieldSchema(name="embeddings", dtype=DataType.FLOAT_VECTOR, dim=dim)
+]
 #
-# schema = CollectionSchema(fields, "hello_milvus is the simplest demo to introduce the APIs")
+schema = CollectionSchema(fields, "hello_milvus is the simplest demo to introduce the APIs")
 #
 # print(fmt.format("Create collection `hello_milvus`"))
-# hello_milvus = Collection("hello_milvus", schema, consistency_level="Strong")
+hello_milvus = Collection("hello_milvus", schema, consistency_level="Strong")
 #
 # ################################################################################
 # # 3. insert data
@@ -61,17 +61,17 @@ num_entities, dim = 3000, 8
 # # - or the existing primary key field from the entities if auto_id=False in the schema.
 #
 # print(fmt.format("Start inserting entities"))
-# rng = np.random.default_rng(seed=19530)
-# entities = [
-#     # provide the pk field because `auto_id` is set to False
-#     [str(i) for i in range(num_entities)],
-#     rng.random(num_entities).tolist(),  # field random, only supports list
-#     rng.random((num_entities, dim)),    # field embeddings, supports numpy.ndarray and list
-# ]
+rng = np.random.default_rng(seed=19530)
+entities = [
+    # provide the pk field because `auto_id` is set to False
+    [str(i) for i in range(num_entities)],
+    rng.random(num_entities).tolist(),  # field random, only supports list
+    rng.random((num_entities, dim)),    # field embeddings, supports numpy.ndarray and list
+]
+
+insert_result = hello_milvus.insert(entities)
 #
-# insert_result = hello_milvus.insert(entities)
-#
-# hello_milvus.flush()
+hello_milvus.flush()
 # print(f"Number of entities in Milvus: {hello_milvus.num_entities}")  # check the num_entites
 #
 # ################################################################################
@@ -79,13 +79,13 @@ num_entities, dim = 3000, 8
 # # We are going to create an IVF_FLAT index for hello_milvus collection.
 # # create_index() can only be applied to `FloatVector` and `BinaryVector` fields.
 # print(fmt.format("Start Creating index IVF_FLAT"))
-# index = {
-#     "index_type": "IVF_FLAT",
-#     "metric_type": "L2",
-#     "params": {"nlist": 128},
-# }
-#
-# hello_milvus.create_index("embeddings", index)
+index = {
+    "index_type": "IVF_FLAT",
+    "metric_type": "L2",
+    "params": {"nlist": 128},
+}
+
+hello_milvus.create_index("embeddings", index)
 #
 # ################################################################################
 # # 5. search, query, and hybrid search
@@ -102,14 +102,14 @@ num_entities, dim = 3000, 8
 # # -----------------------------------------------------------------------------
 # # search based on vector similarity
 # print(fmt.format("Start searching based on vector similarity"))
-# vectors_to_search = entities[-1][-2:]
-# search_params = {
-#     "metric_type": "L2",
-#     "params": {"nprobe": 10},
-# }
+vectors_to_search = entities[-1][-2:]
+search_params = {
+    "metric_type": "L2",
+    "params": {"nprobe": 10},
+}
 #
 # start_time = time.time()
-# result = hello_milvus.search(vectors_to_search, "embeddings", search_params, limit=3, output_fields=["random"])
+result = hello_milvus.search(vectors_to_search, "embeddings", search_params, limit=3, output_fields=["random"])
 # end_time = time.time()
 #
 # for hits in result:
