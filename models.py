@@ -1,7 +1,8 @@
 from ragatouille import RAGPretrainedModel
 from langchain_huggingface import HuggingFaceEmbeddings
-from configs import DENSE_EMBEDDING_MODEL_NAME,RERANKER_NAME
-
+from configs import DENSE_EMBEDDING_MODEL_NAME,RERANKER_NAME,SPARSE_EMBEDDING_MODEL_NAME
+from pymilvus.model.sparse.bm25.tokenizers import build_default_analyzer
+from pymilvus.model.sparse import BM25EmbeddingFunction
 
 
 def get_embedding_model(vector_type):
@@ -20,6 +21,11 @@ def get_embedding_model(vector_type):
         )
     elif vector_type =='sparse':
         embedding_model = None
+        # analyzer = build_default_analyzer(language="en")
+        # tokens = analyzer()
+        # embedding_model = BM25EmbeddingFunction(analyzer)
+        # bm25_ef = BM25EmbeddingFunction(analyzer)
+        # bm25_ef.fit()
     else:
         raise ValueError("The type of embedding model should be either 'dense' or 'sparse'")
     return embedding_model
