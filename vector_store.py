@@ -203,17 +203,44 @@ def txt_to_list(file_path):
 
 
 if __name__ == '__main__':
+    docss= [
+        "The field of artificial intelligence was established as an academic subject in 1956.",
+        "Alan Turing was the pioneer in conducting significant research in artificial intelligence.",
+        "Originating in Maida Vale, London, Turing grew up in the southern regions of England.",
+        "In 1956, artificial intelligence emerged as a scholarly field.",
+        "Turing, originally from Maida Vale, London, was brought up in the south of England."
+    ]
+
+    docs = ['Now, I will introduce the discussion section. '
+            'As we mentioned before, our project on Hand Pose',
+            'Hand Pose Recognition is divided into two parts: hand detection and hand pose recognition. We used',
+            'We used two different models for these tasks which are YOLOv3 and MobileNetv2',
+            'For hand detection, we chose the YOLOv3 model, the reason is that it a classic algorithm for object',
+            "object detection using neural networks. It's known for its feature pyramid network, which has high",
+            'has high accuracy and speed. It is capable of detecting objects in various environments and scenes.',
+            'scenes. However, it does have some limitations, particularly when dealing with small objects due to',
+            'due to their small number of pixel points. Also, It Uses a meshing method rather than a pixel-level',
+            'method, resulting in poor performance in dealing with target edges. Additionally, YOLOv3 is pretty',
+            'is pretty complicated, it requires a large number of parameters to be trained, which can be',
+            'can be time-consuming and resource-intensive.',
+            'Consider the larger number of training data and limited time, we choose MobileNetv2 for the second',
+            'second task which is hand pose recognition. As a neural network, MobileNetv2 is smaller, faster,',
+            'faster, and requires significantly fewer parameters than larger networks like YOLOv3. In other',
+            'In other words, it requires less memory and computational effort than classic large networks.',
+            'However, our model does have some limitations. For the Handpose Recognition task, While it performs',
+            'performs well on images with clear hand contours, it struggles with images with unclear hand',
+            'hand contours or those taken from specific angles.',
+            'Future work will focus on optimizing the model to improve its performance on these challenging',
+            'images. This could involve increasing the number of epochs, using more training']
 
 
 
 
-
-
-    docs = []
+    xx = [""]
     #处理document，txt---list，doc为转换后的list
     txt = ["ame.txt"]
     #连接milvus数据库
-    vector_db = get_vector_store('test', 'sparse', is_new=False,doc=docs)
+    vector_db = get_vector_store('test', 'sparse', is_new=True,doc=docs)
     spilt = vector_db.split_text_files(txt)
     print("split",spilt)
 
@@ -236,7 +263,7 @@ if __name__ == '__main__':
 
     collection = Collection("test")  # Get an existing collection.
     collection.load()
-    queries = ["When was AI established"]
+    queries = ["model is what?"]
     query_embeddings = vector_db.bm25_ef.encode_queries(queries)
     print(type(query_embeddings))
     print("query_embeddings", query_embeddings)

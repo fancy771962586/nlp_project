@@ -14,4 +14,4 @@ async def home(q):
 if __name__ == '__main__':
     vector_db = get_vector_store('test', 'dense', is_new=False)
 
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+uvicorn.run(app, host='0.0.0.0', port=8000)
