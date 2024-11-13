@@ -1,7 +1,8 @@
+from configs import CHUNK_SIZE
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from tqdm import tqdm
 from transformers import AutoTokenizer
-
+from loguru import logger
 from configs import RERANKER_NAME,DENSE_EMBEDDING_MODEL_PATH,DENSE_EMBEDDING_MODEL_NAME,FILE_LIST
 from langchain.docstore.document import Document as LangchainDocument
 from typing import List
@@ -13,7 +14,7 @@ def split_text_files_utils(txt_files: list[any]) -> List[LangchainDocument]:
     for txt_file in txt_files:
         result = txt_to_list(txt_file)
         docs.extend(result)
-    return split_documents(chunk_size=100, knowledge_base=docs, db_type="sparse",model_name=None)
+    return split_documents(chunk_size=CHUNK_SIZE, knowledge_base=docs, db_type="sparse",model_name=None)
 
 
 def txt_to_list(file_path):
@@ -31,6 +32,17 @@ def txt_to_list(file_path):
         return []
 
 
+def remove_duplicated_text(docs_processed):
+    unique_texts = {}
+    docs_processed_unique = []
+    docs = [doc[0].page_content for doc in docs_processed]
+    for doc in docs:
+        if doc not in unique_texts:
+            unique_texts[doc] = True
+            docs_processed_unique.append(doc)
+    return docs_processed_unique
+
+
 def _remove_duplicates(docs_processed: List,db_type):
     # Remove duplicates
     unique_texts = {}
@@ -46,10 +58,12 @@ def _remove_duplicates(docs_processed: List,db_type):
                 docs_processed_unique.append(doc)
     return docs_processed_unique
 
+
 def split_documents(chunk_size: int, knowledge_base: List,db_type,model_name) -> List:
     """
     Split documents into chunks of maximum size `chunk_size` tokens and return a list of documents.
     """
+    logger.info("Current chunk size: {}".format(chunk_size))
     docs_processed = []
     if db_type == 'dense':
         text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
@@ -78,18 +92,13 @@ def split_documents(chunk_size: int, knowledge_base: List,db_type,model_name) ->
     return _remove_duplicates(docs_processed,db_type)
 
 
-
-
-
-
-
-
 def convert_to_langchain_documents(docs):
     langchain_docs = []
     for text in docs:
         langchain_doc = LangchainDocument(text)
         langchain_docs.append(langchain_doc)
     return langchain_docs
+
 
 def show_doc_content(relevant_docs):
     for i, doc in enumerate(relevant_docs):
