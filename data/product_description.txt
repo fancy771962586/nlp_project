@@ -1,0 +1,124 @@
+﻿Item: Sausage & Egg McMuffin Description: Start your day off with a McDonald’s Sausage McMuffin with Egg breakfast sandwich. Selected juicy and tender pork filets with a smooth steamed egg, slightly crispy muffins, and paired with layers of salted cheese. Served hot and fresh, nutritious and delicious! Ingredients: Pork sausage patty, round steamed egg, American cheese, English muffin. Calories: 395 Protein: 23 Fat: 22 Carbohydrates: 26 Sodium: 867 Calcium: 247 Price: 16.5 Time: Breakfast Type: Burger
+
+Item: Grilled Chicken McMuffin Description: Single-layered tender, juicy boneless chicken thigh, pan-fried without oil, served with fresh lettuce and roasted chicken sauce. Slightly crispy muffins, served hot and fresh to provide a rich taste and pleasant flavor! Ingredients: Boneless chicken thigh, lettuce, roasted chicken sauce, English muffin. Calories: 284 Protein: 12 Fat: 13 Carbohydrates: 26 Sodium: 575 Calcium: 128 Price: 13.5 Time: Breakfast Type: Burger
+
+Item: Crispy Chicken McMuffin Description: The golden-brown McChickens are slightly crispy on the outside and have a unique black pepper aroma. Our muffins are crispy on the outside, soft on the inside, and delivered to your hands fresh and hot. Ingredients: Crispy chicken patty, English muffin, black pepper seasoning. Calories: 361 Protein: 16 Fat: 17 Carbohydrates: 35 Sodium: 804 Calcium: 130 Price: 9.5 Time: Breakfast Type: Burger
+
+Item: Double Grilled Chicken McMuffin Description: Double-layered tender, juicy boneless chicken thigh served with fresh lettuce and roasted chicken sauce. Slightly crispy muffins, served hot and fresh to provide a rich taste and pleasant flavor. Ingredients: Double layers of boneless chicken thigh, lettuce, roasted chicken sauce, English muffin. Calories: 357 Protein: 23 Fat: 17 Carbohydrates: 27 Sodium: 1101 Calcium: 135 Price: 17.5 Time: Breakfast Type: Burger
+
+Item: Ham McMuffin Description: Tender, juicy ham-flavored chicken and pork filled patty served with crunchy lettuce. Our muffins are crispy on the outside, soft on the inside, and delivered to your hands fresh and hot. Ingredients: Ham-flavored patty (chicken and pork), lettuce, English muffin. Calories: 236 Protein: 12 Fat: 9 Carbohydrates: 24 Sodium: 464 Calcium: 126 Price: 9.0 Time: Breakfast Type: Burger
+
+Item: Cheese & Egg McMuffin Description: Round steamed egg is smooth and creamy, our muffins are slightly crispy on the outside, soft on the inside, layered with lightly salted cheese, and delivered to your hands fresh and hot, making them both nutritious and tasty all at the same time. Ingredients: Round steamed egg, American cheese, English muffin. Calories: 340 Protein: 17 Fat: 16 Carbohydrates: 30 Sodium: 770 Calcium: 245 Price: 9.0 Time: Breakfast Type: Burger
+
+Item: Double Sausage & Egg McMuffin Description: Double layers of tender and juicy premium pork sausages with a soft, smooth, round steamed egg. Our muffins are slightly crispy on the outside, soft on the inside, layered with lightly salted cheese, and delivered to your hands hot and fresh, making them both nutritious and tasty all at the same time. Ingredients: Double pork sausage patties, round steamed egg, American cheese, English muffin. Calories: 530 Protein: 29 Fat: 33 Carbohydrates: 27 Sodium: 1216 Calcium: 253 Price: 20.5 Time: Breakfast Type: Burger
+
+Item: Sausage McMuffin Description: Selected juicy and tender pork filets, slightly crispy muffins, paired with layers of salted cheese. Served hot and fresh, unique and flavorful! Ingredients: Pork sausage patty, American cheese, English muffin. Calories: 319 Protein: 16 Fat: 17 Carbohydrates: 25 Sodium: 796 Calcium: 214 Price: 12.5 Time: Breakfast Type: Burger
+
+Item: Double Scrambled Egg Grilled Chicken Burger Description: Treat yourself better with two eggs for breakfast! Two high-quality eggs, natural and flavorful, paired with original grilled chicken thigh for a richer taste experience. Ingredients: Double scrambled eggs, grilled chicken thigh, burger bun. Calories: 420 Protein: 27 Fat: 21 Carbohydrates: 30 Sodium: 720 Calcium: 115 Price: 16.5 Time: Breakfast Type: Burger
+
+Item: Double Scrambled Egg Sausage Burger Description: Treat yourself better with two eggs for breakfast! Two high-quality eggs, natural and flavorful, paired with a pork sausage for a richer taste experience. Ingredients: Double scrambled eggs, pork sausage, burger bun. Calories: 440 Protein: 25 Fat: 25 Carbohydrates: 29 Sodium: 687 Calcium: 116 Price: 16.5 Time: Breakfast Type: Burger
+
+Item: Thuringer & Double Scrambled Egg Burger Description: Two high-quality eggs, natural and flavorful, paired with two Thuringer sausages for a richer taste experience. Ingredients: Double scrambled eggs, Thuringer sausages, burger bun. Calories: 398 Protein: 24 Fat: 20 Carbohydrates: 30 Sodium: 633 Calcium: 115 Price: 15.0 Time: Breakfast Type: Burger
+
+Item: Double Scrambled Egg Cheese Burger Description: Treat yourself better with two eggs for breakfast! Two high-quality eggs, natural and flavorful, scrambled to a fluffy perfection! Paired with cheese for a more balanced nutrition! Ingredients: Double scrambled eggs, American cheese, burger bun. Calories: 368 Protein: 22 Fat: 17 Carbohydrates: 31 Sodium: 614 Calcium: 193 Price: 12.5 Time: Breakfast Type: Burger
+
+Item: Double Ham McMuffin Description: Double layers of ham-flavored patties, made with chicken and pork, offer a tender and juicy texture, served with crunchy lettuce. Our muffins are crispy on the outside, soft on the inside, delivered to your hands fresh and hot, full of flavor, and even more delicious. Ingredients: Double ham-flavored patties (chicken and pork), lettuce, English muffin. Calories: 288 Protein: 15 Fat: 14 Carbohydrates: 25 Sodium: 703 Calcium: 128 Price: 14.0 Time: Breakfast Type: Burger
+
+Item: Ham Morning Wrap Description: The wrap is perfectly balanced, soft, and chewy. Filled with delicious scrambled eggs, savory cheese, tender ham steak, and classic ketchup, it offers a rich, layered taste. Start your day right with this hearty breakfast! Ingredients: Wrap, scrambled eggs, American cheese, ham steak, ketchup. Calories: 672 Protein: 27 Fat: 23 Carbohydrates: 74 Sodium: 1970 Calcium: 176 Price: 14.5 Time: Breakfast Type: Burger
+
+Item: Thuringer Sausage Morning Wrap Description: The crust is perfectly balanced, thin yet chewy, filled with fragrant scrambled eggs and tender Thuringer sausages paired with mustard sauce, the flavors are layered and complex. Seize the day with a hearty breakfast! Ingredients: Wrap, scrambled eggs, Thuringer sausage, mustard sauce. Calories: 642 Protein: 26 Fat: 22 Carbohydrates: 56 Sodium: 1923 Calcium: 138 Price: 14.5 Time: Breakfast Type: Burger
+
+Item: Bamboo Shoot & Chicken Congee Description: McDonald's features the three stars of the congee universe. Rice selected from the northeastern region, perfectly cooked at a 12:1 water-to-rice ratio. and enriched with barley, oats, red beans, and other grains. Carefully simmered for 95 minutes until each grain blossoms. Enjoy a bowl of creamy and soft congee with tender chicken and delicious pickled cabbage and bamboo shoots, offering a rich and comforting taste that warms your heart and soul. Ingredients: Rice, chicken, bamboo shoots, pickled cabbage, barley, oats, red beans, water. Calories: 42 Protein: 3 Fat: 2 Carbohydrates: 4 Sodium: 175 Calcium: 7 Price: 6.5 Time: Breakfast Type: Congee
+
+Item: Chicken & Preserved Egg Congee Description: McDonald's features the three stars of the congee universe. Rice selected from the northeastern region, perfectly cooked at a 12:1 water-to-rice ratio, and enriched with barley, oats, red beans, and other grains. Carefully simmered for 95 minutes until each grain blossoms. Enjoy a bowl of creamy and soft congee made with premium preserved eggs and healthy chicken, offering a rich and comforting taste that warms your heart and soul. Ingredients: Rice, preserved egg, chicken, barley, oats, red beans, water. Calories: 68 Protein: 5 Fat: 4 Carbohydrates: 4 Sodium: 178 Calcium: 12 Price: 8.5 Time: Breakfast Type: Congee
+
+Item: Hash Brown Description: This crispy Hash Brown recipe features shredded potato hash brown patties that are prepared so they're fluffy on the inside and crispy and toasty on the outside. Ingredients: Potatoes, vegetable oil, salt, dextrose. Calories: 163 Protein: 1 Fat: 11 Carbohydrates: 15 Sodium: 409 Calcium: 5 Price: 7.5 Time: Breakfast Type: Snack
+
+Item: Thuringer Sausages Description: High-quality meat sausages with rich seasonings, tender and juicy with a grilled flavor and hints of spices. Ingredients: Pork, beef, spices, salt, casing. Calories: 49 Protein: 3 Fat: 4 Carbohydrates: 1 Sodium: 140 Calcium: 3 Price: 8.5 Time: Breakfast Type: Snack
+
+Item: Asian Dough Stick Description: Golden on the outside, light and fluffy on the inside, with a crispy texture. Ingredients: Wheat flour, vegetable oil, salt, water. Calories: 234 Protein: 4 Fat: 18 Carbohydrates: 15 Sodium: 266 Calcium: 19 Price: 7.5 Time: Breakfast Type: Snack
+
+Item: Corn Cup Description: A small cup of sweet corn, with each juicy golden kernel bursting with sweetness. Delicious and refreshing! Ingredients: Sweet corn kernels, salt, water. Calories: 54 Protein: 2 Fat: 1 Carbohydrates: 7 Sodium: 0 Calcium: 6 Price: 12.5 Time: All Day Type: Snack
+
+Item: Oreo McFLURRY Description: When the creaminess of ice cream meets the crispiness of Oreo cookies, this amazing black and white combination creates an incredible flavor. Ingredients: Vanilla soft-serve ice cream, Oreo cookie pieces. Calories: 265 Protein: 5 Fat: 9 Carbohydrates: 40 Sodium: 121 Calcium: 172 Price: 14.5 Time: All Day Type: Ice cream
+
+Item: Strawberry McFLURRY Description: When the creaminess of ice cream meets the crispiness of Oreo cookies, this amazing black and white combination creates an incredible flavor. Add sweet strawberry sauce to create a fresh and unique taste. Ingredients: Vanilla soft-serve ice cream, Oreo cookie pieces, strawberry sauce. Calories: 284 Protein: 5 Fat: 9 Carbohydrates: 45 Sodium: 122 Calcium: 173 Price: 14.5 Time: All Day Type: Ice cream
+
+Item: Chocolate Sundae Description: Made with premium milk, cooled to the perfect temperature with specialized equipment. Mixed to the ideal consistency for smooth, flavorful ice cream. Paired with silky chocolate syrup for a rich, velvety, and aromatic taste experience! Ingredients: Vanilla soft-serve ice cream, chocolate syrup. Calories: 252 Protein: 4 Fat: 7 Carbohydrates: 42 Sodium: 110 Calcium: 132 Price: 12.0 Time: All Day Type: Ice cream
+
+Item: Taro Pie Description: Soft center, crispy coating—pure delight in every bite! Ingredients: Wheat flour, taro filling, vegetable oil, sugar. Calories: 243 Protein: 3 Fat: 14 Carbohydrates: 27 Sodium: 164 Calcium: 8 Price: 8.0 Time: All Day Type: Snack
+
+Item: Pineapple Pie Description: Soft center, crispy coating—pure delight in every bite! Ingredients: Wheat flour, pineapple filling, vegetable oil, sugar. Calories: 239 Protein: 2 Fat: 14 Carbohydrates: 26 Sodium: 144 Calcium: 6 Price: 8.0 Time: All Day Type: Snack
+
+Item: Minute Maid™ Golden Orange Description: Packed with vitamins and fiber to provide you with fresh energy every day. Ingredients: Orange juice. Calories: 124 Protein: 0 Fat: 0 Carbohydrates: 28 Sodium: 40 Calcium: 0 Price: 12.5 Time: All Day Type: Drink
+
+Item: 100% Apple Juice (Carton) Description: Packed with vitamins to give you a fresh start every day. Ingredients: Apple juice. Calories: 88 Protein: 0 Fat: 0 Carbohydrates: 21 Sodium: 0 Calcium: 0 Price: 11.5 Time: All Day Type: Drink
+
+Item: Milk Description: Nutritious milk offers a healthy choice for you! Ingredients: Milk. Calories: 134 Protein: 7 Fat: 7 Carbohydrates: 11 Sodium: 76 Calcium: 241 Price: 19.0 Time: All Day Type: Drink
+
+Item: Iced Americano Description: Thick crema, freshly extracted coffee concentrate. Rich texture of dark chocolate flavor. Made with 100% Rainforest Alliance certified coffee beans (without milk). Ingredients: Espresso coffee, water. Calories: 10 Protein: 1 Fat: 0 Carbohydrates: 1 Sodium: 0 Calcium: 8 Price: 19.0 Time: All Day Type: Drink
+
+Item: Iced Naitie Description: More milk and stronger than Latte. More coffee powder and milk, with rich milk chocolate flavor. Made with 100% Rainforest Alliance certified coffee beans. Ingredients: Espresso coffee, milk, water. Calories: 86 Protein: 4 Fat: 4 Carbohydrates: 7 Sodium: 46 Calcium: 139 Price: 21.0 Time: All Day Type: Drink
+
+Item: Yeung Gwong Lemon Black Tea Description: Sweet and refreshing taste, smooth and invigorating—you’ll want to drink one after another! Ingredients: Black tea, lemon flavor, sugar, water. Calories: 85 Protein: 0 Fat: 0 Carbohydrates: 20 Sodium: 15 Calcium: 0 Price: 9.5 Time: All Day Type: Drink
+
+Item: Sprite Description: A variety of drink options. Ingredients: Carbonated water, high fructose corn syrup, natural flavors, citric acid, sodium citrate. Calories: 107 Protein: 0 Fat: 0 Carbohydrates: 27 Sodium: 27 Calcium: 0 Price: 9.5 Time: All Day Type: Drink
+
+Item: Coca-Cola Description: A variety of drink options. Ingredients: Carbonated water, high fructose corn syrup, caramel color, phosphoric acid, natural flavors, caffeine. Calories: 107 Protein: 0 Fat: 0 Carbohydrates: 26 Sodium: 10 Calcium: 0 Price: 9.5 Time: All Day Type: Drink
+
+Item: Coca-Cola No Sugar Description: A variety of drink options. Ingredients: Carbonated water, caramel color, phosphoric acid, aspartame, potassium benzoate, caffeine, natural flavors. Calories: 0 Protein: 0 Fat: 0 Carbohydrates: 0 Sodium: 0 Calcium: 0 Price: 9.5 Time: All Day Type: Drink
+
+Item: Soy Milk Description: Selected soybeans, rich in high-quality protein, to kickstart your day with energy. Ingredients: Water, soybeans, sugar, salt. Calories: 156 Protein: 7 Fat: 3 Carbohydrates: 25 Sodium: 51 Calcium: 24 Price: 9.5 Time: All Day Type: Drink
+
+Item: Naitie Description: More milk and stronger than Latte. More coffee powder and milk, with rich milk chocolate flavor. Made with 100% Rainforest Alliance certified coffee beans. Ingredients: Espresso coffee, milk. Calories: 133 Protein: 7 Fat: 7 Carbohydrates: 11 Sodium: 74 Calcium: 222 Price: 21.0 Time: All Day Type: Drink
+
+Item: Ceylon Black Tea Description: Hot, fragrant black tea to keep you warm and alert all day. Ingredients: Black tea leaves, water. Calories: 0 Protein: 0 Fat: 0 Carbohydrates: 3 Sodium: 3 Calcium: 21 Price: 11.0 Time: All Day Type: Drink
+
+Item: Hot Chocolate Description: With its rich and smooth flavor, this drink will become your new favorite. Ingredients: Milk, cocoa powder, sugar. Calories: 124 Protein: 1 Fat: 1 Carbohydrates: 26 Sodium: 103 Calcium: 0 Price: 12.0 Time: All Day Type: Drink
+
+Item: Strawberry Sundae Description: Made with premium milk, cooled to the perfect temperature with specialized equipment. Mixed to the ideal consistency for smooth, flavorful ice cream. Paired with fresh, delicious strawberry syrup for sweet, pink memories! Ingredients: Vanilla soft-serve ice cream, strawberry syrup. Calories: 191 Protein: 3 Fat: 5 Carbohydrates: 33 Sodium: 58 Calcium: 121 Price: 12.0 Time: All Day Type: Ice cream
+
+Item: Cone Description: Made with a unique milk blend, cooled to the perfect temperature with specialized equipment. Mixed to the ideal consistency for smooth, flavorful ice cream. Served in a crispy cone for a delightful blend of sweetness and crunch! Ingredients: Vanilla soft-serve ice cream, cone (wheat flour, sugar, vegetable oil). Calories: 123 Protein: 3 Fat: 3 Carbohydrates: 20 Sodium: 55 Calcium: 84 Price: 5.0 Time: All Day Type: Ice cream
+
+Item: New Upgraded Pan Grilled Chicken Sandwich Description: Tender and juicy boneless chicken filet, topped with onions and pepper, served with fresh lettuce and rich BBQ sauce. Pan-fried without oil for a flavorful experience. Ingredients: Chicken filet, lettuce, BBQ sauce, onions, sesame bun. Calories: 399 Protein: 24 Fat: 17 Carbohydrates: 37 Sodium: 1162 Calcium: 91 Price: 23.5 Time: Main Meal Type: Burger
+
+Item: McCHICKEN Description: Crunchy and refreshing lettuce provides you with plant-based fiber. The golden and crispy chicken meat comes from top-quality chickens reared according to high standards. Ingredients: Chicken patty, lettuce, mayonnaise, sesame bun. Calories: 386 Protein: 16 Fat: 17 Carbohydrates: 41 Sodium: 835 Calcium: 151 Price: 16.0 Time: Main Meal Type: Burger
+
+Item: BIG MAC Description: The new Big Mac is here! Two 100% pure beef patties cooked with onions for extra flavor, 50% more sauce, served with chewy bread, cheese, lettuce, and pickles. Ingredients: Beef patties, lettuce, pickles, onions, Big Mac sauce, sesame bun. Calories: 524 Protein: 27 Fat: 26 Carbohydrates: 45 Sodium: 877 Calcium: 178 Price: 25.0 Time: Main Meal Type: Burger
+
+Item: McSpicy® Chicken Filet Burger Description: Crispy and spicy on the outside, tender and juicy chicken thigh inside, served with fresh lettuce and delicious sauce. Ingredients: Spicy chicken thigh, lettuce, mayonnaise, sesame bun. Calories: 485 Protein: 24 Fat: 24 Carbohydrates: 42 Sodium: 1208 Calcium: 154 Price: 22.5 Time: Main Meal Type: Burger
+
+Item: Sausage & Beef Burger Description: Featuring two 100% pure beef patties, fried on an iron plate with just a touch of salt and pepper, and paired with two roasted sausages. Topped with yellow mustard sauce and nestled in soft buns. Ingredients: Beef patties, sausages, mustard sauce, sesame bun. Calories: 448 Protein: 28 Fat: 23 Carbohydrates: 31 Sodium: 949 Calcium: 161 Price: 25.5 Time: Main Meal Type: Burger
+
+Item: BLT Double Beef Burger Description: Enjoy a layer of crispy lettuce, a slice of fresh tomato, two slices of bacon, two slices of beef patties, and a layer of special sauce. Ingredients: Beef patties, bacon, lettuce, tomato, special sauce, sesame bun. Calories: 467 Protein: 26 Fat: 24 Carbohydrates: 35 Sodium: 659 Calcium: 149 Price: 23.5 Time: Main Meal Type: Burger
+
+Item: Double Cheeseburger Description: 100% pure beef and double-layered soft cheese sandwiched in soft bread and seasoned with delicious sauces, presenting twice the temptation that is simply irresistible! Ingredients: Beef patty, American cheese, pickles, diced onions, ketchup, mustard, sesame bun. Calories: 435 Protein: 27 Fat: 22 Carbohydrates: 32 Sodium: 1015 Calcium: 242 Price: 22.5 Time: Main Meal Type: Burger
+
+Item: Cheeseburger Description: 100% pure beef and soft cheese served together with crispy pickles and diced onions drizzled in delicious tomato sauce, offering rich bursts of flavor with every bite! If you don't want cheese, "Hamburger" can be a good choice. Ingredients: Beef patty, American cheese, pickles, diced onions, ketchup, mustard, sesame bun. Calories: 297 Protein: 17 Fat: 12 Carbohydrates: 31 Sodium: 743 Calcium: 151 Price: 14.0 Time: Main Meal Type: Burger
+
+Item: Hamburger Description: The 100% pure beef patty is seasoned with only a little salt and pepper, and the classic flavor of crispy pickles, diced onion cubes, and delicious tomato sauce is simply irresistible! Ingredients: Beef patty, pickles, diced onions, ketchup, mustard, sesame bun. Calories: 248 Protein: 14 Fat: 8 Carbohydrates: 29 Sodium: 536 Calcium: 63 Price: 13.0 Time: Main Meal Type: Burger
+
+Item: Thick Angus MAX Burger with Bacon Description: Golden cheese slices melt slowly onto the beef patty, blending with the meat's juices for a richer flavor. This burger is topped with bacon, yellow cheddar cheese, fresh romaine lettuce, and wrapped in black and white sesame brioche bread, drizzled with a secret sauce, creating a flavorful Thick Angus MAX Burger with Bacon. Ingredients: Angus beef patty, cheddar cheese, bacon, romaine lettuce, secret sauce, black and white sesame brioche bun. Calories: 771 Protein: 34 Fat: 52 Carbohydrates: 43 Sodium: 1118 Calcium: 180 Price: 33.5 Time: Main Meal Type: Burger
+
+Item: Double Filet-O-Fish Burger Description: The Double Filet-O-Fish Burger features two deep-sea filets with white and delicate meat that is refreshing and rich in high-quality protein. Paired with classic cheddar cheese and flavored sauce, the contents sit between two freshly steamed and fluffy buns. With a delicious lingering taste in every bite, this option is both yummy and nutritious. Ingredients: Two fish filets, cheddar cheese, tartar sauce, steamed bun. Calories: 457 Protein: 26 Fat: 18 Carbohydrates: 46 Sodium: 968 Calcium: 968 Price: 34.5 Time: Main Meal Type: Burger
+
+Item: Thick Angus MAX Burger with Cheese Description: Golden cheese slices melt slowly onto the beef patty, blending with the meat's juices for a richer flavor. This classic burger is topped with secret cheese sauce, Gouda cheese slices, fresh tomato slices, and wrapped in black and white sesame brioche bread, creating the Thick Angus MAX Burger with Cheese. Ingredients: Angus beef patty, secret cheese sauce, Gouda cheese, fresh tomato slices, black and white sesame brioche bun. Calories: 731 Protein: 30 Fat: 49 Carbohydrates: 43 Sodium: 928 Calcium: 166 Price: 31.0 Time: Main Meal Type: Burger
+
+Item: Double Thick Angus MAX Burger with Bacon Description: Featuring double Angus beef patties, golden cheese slices that melt slowly onto the beef, blending with the meat's juices for a richer flavor. This burger is topped with bacon, cheddar cheese, fresh romaine lettuce, and wrapped in black and white sesame brioche bread, drizzled with a secret sauce, creating the Double Angus MAX Burger with Bacon. Ingredients: Double Angus beef patties, cheddar cheese, bacon, romaine lettuce, secret sauce, black and white sesame brioche bun. Calories: 1092 Protein: 57 Fat: 75 Carbohydrates: 46 Sodium: 1499 Calcium: 277 Price: 45.0 Time: Main Meal Type: Burger
+
+Item: Double Thick Angus MAX Burger with Cheese Description: Featuring double Angus beef patties, golden cheese slices that melt slowly onto the beef, blending with the meat's juices for a richer flavor. Topped with secret cheese sauce, Gouda cheese slices, and fresh tomato slices, all wrapped in black and white sesame brioche bread, creating the classic Double Angus MAX Burger with Cheese. Ingredients: Double Angus beef patties, secret cheese sauce, Gouda cheese, fresh tomato slices, black and white sesame brioche bun. Calories: 1040 Protein: 53 Fat: 72 Carbohydrates: 45 Sodium: 1252 Calcium: 244 Price: 42.0 Time: Main Meal Type: Burger
+
+Item: Spicy McWings 2pc Description: Spicy chicken wings, fried to golden perfection, offering bursts of spiciness! Ingredients: Chicken wings, spicy seasoning blend, vegetable oil. Calories: 190 Protein: 10 Fat: 13 Carbohydrates: 8 Sodium: 439 Calcium: 9 Price: 14.0 Time: Main Meal Type: Snack
+
+Item: Chicken McNUGGETS 5pc Description: High-quality chicken, carefully cooked to lock in juices and flavor, served with a secret sauce. Crispy outside, tender and juicy inside. Ingredients: Chicken, breading (wheat flour, spices), vegetable oil, secret dipping sauce. Calories: 215 Protein: 13 Fat: 13 Carbohydrates: 12 Sodium: 442 Calcium: 9 Price: 14.0 Time: Main Meal Type: Snack
+
+Item: McCRISPY CHICKEN 1pc Description: American-style fried chicken is made with innovative "new technology". With fragrant and crisp skin and tender and juicy meat within, every bite is delicious and every piece is huge! Ingredients: Chicken, breading (wheat flour, spices), vegetable oil. Calories: 326 Protein: 21 Fat: 20 Carbohydrates: 15 Sodium: 910 Calcium: 19 Price: 14.0 Time: Main Meal Type: Snack
+
+Item: Big Chicken Cutlet (Spicy) Description: Big Chicken Cutlet marinated with a variety of spicy flavors including chili, garlic, onion, and black pepper to provide a rich flavor and satisfy your cravings in every bite! Ingredients: Chicken cutlet, spicy marinade (chili, garlic, onion, black pepper), breading, vegetable oil. Calories: 362 Protein: 22 Fat: 20 Carbohydrates: 23 Sodium: 907 Calcium: 14 Price: 13.0 Time: Main Meal Type: Snack
+
+Item: French Fries (M) Description: High-quality potatoes with a slightly crisp exterior and fluffy interior—irresistibly delicious! Ingredients: Potatoes, vegetable oil, salt. Calories: 226 Protein: 3 Fat: 10 Carbohydrates: 28 Sodium: 197 Calcium: 12 Price: 13.5 Time: Main Meal Type: Snack
+
+Item: Apple Slices (60g) Description: Fresh, crunchy apple slices provide kids with a tasty and nutritious snack. Ingredients: Fresh apples. Calories: 32 Protein: 0 Fat: 0 Carbohydrates: 7 Sodium: 0 Calcium: 19 Price: 6.5 Time: Main Meal Type: Snack
+
+Item: Filet-O-Fish Description: Golden, crispy fried deep-sea fish filet, tender and juicy on the inside, paired with flavorful salad sauce and half a slice of cheese for a unique taste. Ingredients: Fish filet, tartar sauce, half slice of cheese, steamed bun. Calories: 340 Protein: 16 Fat: 14 Carbohydrates: 37 Sodium: 598 Calcium: 212 Price: 21.5 Time: Main Meal Type: Burger
+

@@ -3,10 +3,46 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from tqdm import tqdm
 from transformers import AutoTokenizer
 from loguru import logger
-from configs import RERANKER_NAME,DENSE_EMBEDDING_MODEL_PATH,DENSE_EMBEDDING_MODEL_NAME,FILE_LIST
+from configs import RERANKER_NAME,DENSE_EMBEDDING_MODEL_PATH,DENSE_EMBEDDING_MODEL_NAME,FILE_LIST, USR_PROMPT,SYS_PROMPT
 from langchain.docstore.document import Document as LangchainDocument
 from typing import List
 from configs import MARKDOWN_SEPARATORS
+import re
+
+
+def extract_txt(text):
+    # 使用正则表达式匹配数字 12123
+    if 'User' in text:
+        match = re.search(r"<div class='message'>(.*?)</div>", text, re.DOTALL)
+    else:
+        match = re.search(r"<div class='label'><b>McSmartBot</b></div><div class='message'>(.*?)</div>", text, re.DOTALL)
+    if match:
+        return match.group(1)
+    return None
+
+
+def save_history(chat_history, turn):
+    messages=[]
+    for history in chat_history:
+        # history = json.loads(history)
+        messages.append({'role':history.get('role'),'content':extract_txt(history.get('content'))})
+        print(messages)
+    return messages[-turn*2:]
+
+
+
+def history_to_str(messages):
+    msg = ''
+    for history in messages:
+        role = history.get('role')
+        text = history.get('content')
+        if text is None:
+            text =''
+        msg += '{}: {}\n'.format(role, text)
+    return msg
+
+
+
 
 
 def split_text_files_utils(txt_files: list[any]) -> List[LangchainDocument]:
@@ -20,10 +56,10 @@ def split_text_files_utils(txt_files: list[any]) -> List[LangchainDocument]:
 def txt_to_list(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
-            lines = file.readlines()  # Read all lines from the file
+            lines = file.read()  # Read all lines from the file
             # Split each line by commas and flatten the list
 
-            return lines
+            return [lines]
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' was not found.")
         return []
@@ -77,7 +113,8 @@ def split_documents(chunk_size: int, knowledge_base: List,db_type,model_name) ->
         for doc in tqdm(knowledge_base):
             docs_processed += text_splitter.split_documents([doc])
     elif db_type == 'sparse':
-        text_splitter = RecursiveCharacterTextSplitter(
+        text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+            model_name = 'gpt-4o',
             chunk_size=chunk_size,
             chunk_overlap=int(chunk_size / 10),
             add_start_index=False,
@@ -100,7 +137,23 @@ def convert_to_langchain_documents(docs):
     return langchain_docs
 
 
+
+def build_prompt(context, history, question):
+    sys_prompt = SYS_PROMPT.format(context=context)
+    user_prompt = USR_PROMPT.format(history=history, question=question)
+    final_prompt = {
+                "messages": [
+                    {"role": "system", "content": sys_prompt},
+                    {"role": "user", "content": user_prompt},
+                ]
+            }
+
+    return final_prompt, user_prompt
+
 def show_doc_content(relevant_docs):
     for i, doc in enumerate(relevant_docs):
         print(f"Document {i}------------------------------------------------------------")
-        print(doc[0].page_content)
+        print(doc.page_content)
+
+
+

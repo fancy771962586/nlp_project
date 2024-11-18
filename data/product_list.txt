@@ -1,0 +1,62 @@
+Item: Sausage & Egg McMuffin Calories: 395 Price: 16.5 Time: Breakfast Type: Burger
+Item: Grilled Chicken McMuffin Calories: 284 Price: 13.5 Time: Breakfast Type: Burger
+Item: Crispy Chicken McMuffin Calories: 361 Price: 9.5 Time: Breakfast Type: Burger
+Item: Double Grilled Chicken McMuffin Calories: 357 Price: 17.5 Time: Breakfast Type: Burger
+Item: Ham McMuffin Calories: 236 Price: 9.0 Time: Breakfast Type: Burger
+Item: Cheese & Egg McMuffin Calories: 340 Price: 9.0 Time: Breakfast Type: Burger
+Item: Double Sausage & Egg McMuffin Calories: 530 Price: 20.5 Time: Breakfast Type: Burger
+Item: Sausage McMuffin Calories: 319 Price: 12.5 Time: Breakfast Type: Burger
+Item: Double Scrambled Egg Grilled Chicken Burger Calories: 420 Price: 16.5 Time: Breakfast Type: Burger
+Item: Double Scrambled Egg Sausage Burger Calories: 440 Price: 16.5 Time: Breakfast Type: Burger
+Item: Thuringer & Double Scrambled Egg Burger Calories: 398 Price: 15.0 Time: Breakfast Type: Burger
+Item: Double Scrambled Egg Cheese Burger Calories: 368 Price: 12.5 Time: Breakfast Type: Burger
+Item: Double Ham McMuffin Calories: 288 Price: 14.0 Time: Breakfast Type: Burger
+Item: Ham Morning Wrap Calories: 672 Price: 14.5 Time: Breakfast Type: Burger
+Item: Thuringer Sausage Morning Wrap Calories: 642 Price: 14.5 Time: Breakfast Type: Burger
+Item: Bamboo Shoot & Chicken Congee Calories: 42 Price: 6.5 Time: Breakfast Type: Congee
+Item: Chicken & Preserved Egg Congee Calories: 68 Price: 8.5 Time: Breakfast Type: Congee
+Item: Hash Brown Calories: 163 Price: 7.5 Time: Breakfast Type: Snack
+Item: Thuringer Sausages Calories: 49 Price: 8.5 Time: Breakfast Type: Snack
+Item: Asian Dough Stick Calories: 234 Price: 7.5 Time: Breakfast Type: Snack
+Item: Corn Cup Calories: 54 Price: 12.5 Time: All Day Type: Snack
+Item: Oreo McFLURRY Calories: 265 Price: 14.5 Time: All Day Type: Ice cream
+Item: Strawberry McFLURRY Calories: 284 Price: 14.5 Time: All Day Type: Ice cream
+Item: Chocolate Sundae Calories: 252 Price: 12.0 Time: All Day Type: Ice cream
+Item: Taro Pie Calories: 243 Price: 8.0 Time: All Day Type: Snack
+Item: Pineapple Pie Calories: 239 Price: 8.0 Time: All Day Type: Snack
+Item: Minute Maid Golden Orange Calories: 124 Price: 12.5 Time: All Day Type: Drink
+Item: 100% Apple Juice (Carton) Calories: 88 Price: 11.5 Time: All Day Type: Drink
+Item: Milk Calories: 134 Price: 19.0 Time: All Day Type: Drink
+Item: Iced Americano Calories: 10 Price: 19.0 Time: All Day Type: Drink
+Item: Iced Naitie Calories: 86 Price: 21.0 Time: All Day Type: Drink
+Item: Yeung Gwong Lemon Black Tea Calories: 85 Price: 9.5 Time: All Day Type: Drink
+Item: Sprite Calories: 107 Price: 9.5 Time: All Day Type: Drink
+Item: Coca-Cola Calories: 107 Price: 9.5 Time: All Day Type: Drink
+Item: Coca-Cola No Sugar Calories: 0 Price: 9.5 Time: All Day Type: Drink
+Item: Soy Milk Calories: 156 Price: 9.5 Time: All Day Type: Drink
+Item: Naitie Calories: 133 Price: 21.0 Time: All Day Type: Drink
+Item: Ceylon Black Tea Calories: 0 Price: 11.0 Time: All Day Type: Drink
+Item: Hot Chocolate Calories: 124 Price: 12.0 Time: All Day Type: Drink
+Item: Strawberry Sundae Calories: 191 Price: 12.0 Time: All Day Type: Ice cream
+Item: Cone Calories: 123 Price: 5.0 Time: All Day Type: Ice cream
+Item: New Upgraded Pan Grilled Chicken Sandwich Calories: 399 Price: 23.5 Time: Main Meal Type: Burger
+Item: McCHICKEN Calories: 386 Price: 16.0 Time: Main Meal Type: Burger
+Item: BIG MAC Calories: 524 Price: 25.0 Time: Main Meal Type: Burger
+Item: McSpicy Chicken Filet Burger Calories: 485 Price: 22.5 Time: Main Meal Type: Burger
+Item: Sausage & Beef Burger Calories: 448 Price: 25.5 Time: Main Meal Type: Burger
+Item: BLT Double Beef Burger Calories: 467 Price: 23.5 Time: Main Meal Type: Burger
+Item: Double Cheeseburger Calories: 435 Price: 22.5 Time: Main Meal Type: Burger
+Item: Cheeseburger Calories: 297 Price: 14.0 Time: Main Meal Type: Burger
+Item: Hamburger Calories: 248 Price: 13.0 Time: Main Meal Type: Burger
+Item: Thick Angus MAX Burger with Bacon Calories: 771 Price: 33.5 Time: Main Meal Type: Burger
+Item: Double Filet-O-Fish Burger Calories: 457 Price: 34.5 Time: Main Meal Type: Burger
+Item: Thick Angus MAX Burger with Cheese Calories: 731 Price: 31.0 Time: Main Meal Type: Burger
+Item: Double Thick Angus MAX Burger with Bacon Calories: 1092 Price: 45.0 Time: Main Meal Type: Burger
+Item: Double Thick Angus MAX Burger with Cheese Calories: 1040 Price: 42.0 Time: Main Meal Type: Burger
+Item: Spicy McWings 2pc Calories: 190 Price: 14.0 Time: Main Meal Type: Snack
+Item: Chicken McNUGGETS 5pc Calories: 215 Price: 14.0 Time: Main Meal Type: Snack
+Item: McCRISPY CHICKEN 1pc Calories: 326 Price: 14.0 Time: Main Meal Type: Snack
+Item: Big Chicken Cutlet (Spicy) Calories: 362 Price: 13.0 Time: Main Meal Type: Snack
+Item: French Fries (M) Calories: 226 Price: 13.5 Time: Main Meal Type: Snack
+Item: Apple Slices (60g) Calories: 32 Price: 6.5 Time: Main Meal Type: Snack
+Item: Filet-O-Fish Calories: 340 Price: 21.5 Time: Main Meal Type: Burger

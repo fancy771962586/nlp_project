@@ -35,7 +35,12 @@ def get_embedding_model(vector_type):
     return embedding_model
 
 def get_rerank_model():
-    return RAGPretrainedModel.from_pretrained(RERANKER_NAME)
+    logger.info("loading the reranking embedding model...")
+    start_time = time.time()
+    model = RAGPretrainedModel.from_pretrained(RERANKER_NAME)
+    end_time = time.time()
+    logger.info('Finish loading model, cost {:.4f}s'.format(end_time - start_time))
+    return model
 
 def rerank(question, relevant_docs: List, num_docs_final,rerank_model):
     logger.debug("Reranking documents...")

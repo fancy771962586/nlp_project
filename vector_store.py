@@ -13,8 +13,8 @@ Collection,connections,
 )
 from pymilvus import MilvusClient
 from vector_store_interface import VectorStore
-from utils import split_documents,txt_to_list,split_text_files_utils
-
+from utils import split_documents, txt_to_list, split_text_files_utils, show_doc_content
+import os
 
 class SparseVectorStore(VectorStore):
     """Class of Sparse Vector"""
@@ -77,7 +77,7 @@ class SparseVectorStore(VectorStore):
         # 定义字段
         fields = [
             FieldSchema(name="ID", dtype=DataType.VARCHAR,is_primary=True, auto_id=True, max_length=100),
-            FieldSchema(name="Content", dtype=DataType.VARCHAR,max_length=512),
+            FieldSchema(name="Content", dtype=DataType.VARCHAR,max_length=16384), # var length != token
             FieldSchema(name="sparse_vector", dtype=DataType.SPARSE_FLOAT_VECTOR),
 
         ]
@@ -122,6 +122,7 @@ class DenseVectorStore(VectorStore):
         logger.debug("Splitting text files into chunks...")
         docs = []
         for txt_file in txt_files:
+            print(txt_file)
             result = TextLoader(txt_file, encoding='utf-8').load()
             docs.extend(result)
         return split_documents(chunk_size=CHUNK_SIZE, knowledge_base=docs,db_type=self.db_type,model_name = self.embedding_name)
@@ -149,34 +150,41 @@ class DenseVectorStore(VectorStore):
 
 
 
-
-
-
-
-
 if __name__ == '__main__':
-
-    txt = ["ame.txt"]
-
+    folder_path = '.\data'
+    txt= []
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.txt'):
+            file_path = os.path.join(folder_path, filename)
+            txt.append(file_path)
+    print(txt)
 
 
 
     # #test dense
-    # vector_db = DenseVectorStore('localhost', '19530', 'default','dense_test',
+    # vector_db = DenseVectorStore('localhost', '19530', 'default','mcdense_test',
     #                               is_new=False)
     # # d = vector_db.split_text_files(txt)
+    # # print(d)
+    # # show_doc_content(d)
+    # #
     # # for doc in tqdm(d, total=len(d)):
     # #     vector_db.insert_documents([doc])
-    # r = vector_db.search_documents("what model do they use",None,5)
+    # r = vector_db.search_documents("Where did first McDonald’s in mainland China opened",None,5)
     # print("results:", r)
 
 
     # test sparse
-    vector_db = SparseVectorStore('localhost', '19530', 'default', 'sparse_test',
+    vector_db = SparseVectorStore('localhost', '19530', 'default', 'mcsparse_test',
                                    is_new=False)
-    doc = vector_db.split_text_files(txt)
-    vector_db.insert_documents(doc)
-    r=vector_db.search_documents("QWE1233",None,5)
+    # doc = vector_db.split_text_files(txt)
+    # print(len(doc))
+    # # for d in doc:
+    # #     print("__________\n")
+    # #     print(d)
+    #
+    # vector_db.insert_documents(doc)
+    r=vector_db.search_documents("what is the price of Filet-O-Fish",None,5)
     print("results:", r)
 
 
