@@ -78,11 +78,12 @@ def hybrid_search(ques:Body):
     res = mixed_search(question, sparse_db, dense_db)
     res = remove_duplicated_text(res)
     logger.info(f"There are total {len(res)} documents after removing duplicates")
-    # res_final_text, res_final = rerank(question, res, top_k, reranker)
+    logger.debug('reranking the result..., current top k:{}'.format(top_k))
+    res_final_text, res_final = rerank(question, res, top_k, reranker)
     end_time = time.time()
     logger.info('Finish searching and reranking, cost {:.4f}s in total'.format(end_time - start_time))
-    res = "\n".join([f"Document {str(i)}:::\n" + doc for i, doc in enumerate(res)])
-    return {"response": res}
+    res_final = "\n".join([f"Document {str(i)}:::\n" + doc for i, doc in enumerate(res_final_text)])
+    return {"response": res_final}
 
 
 
@@ -90,6 +91,7 @@ def hybrid_search(ques:Body):
 if __name__ == '__main__':
     sparse_db = SparseVectorStore('localhost', '19530', 'default', 'mcsparse_test')
     dense_db = DenseVectorStore('localhost', '19530', 'default', 'mcdense_test')
+    reranker = get_rerank_model()
     uvicorn.run(app, host="0.0.0.0", port=8001)
 
 
