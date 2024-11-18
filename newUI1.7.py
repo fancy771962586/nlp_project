@@ -33,10 +33,8 @@ async def respond(message, chat_history):
     async with httpx.AsyncClient() as client:
             assistant_label = "<div class='label'><b>McSmartBot</b></div>"
             chat_history.append({"role": "assistant", "content": assistant_label})  # Add assistant label
-            print("chat:",chat_history)
             m = save_history(chat_history, 4)
             history = history_to_str(m)
-            print(history)
             logger.info("Current history:\n{}".format(history))
             data = {"question": message}
             logger.debug("Searching the relevant documents...")
@@ -77,8 +75,9 @@ async def respond(message, chat_history):
                 except:
                     logger.warning("Request time out, retrying {} time(s)".format(retries))
                     retries += 1
-            if retries == 3:
-                logger.error("Max retries exceeded")
+                    if retries == 3:
+                        logger.error("Max retries exceeded")
+                        break
 
 
 

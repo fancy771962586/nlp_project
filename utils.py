@@ -148,7 +148,7 @@ def build_prompt(context, history, question):
                 ]
             }
 
-    return final_prompt, user_prompt
+    return final_prompt, sys_prompt
 
 def show_doc_content(relevant_docs):
     for i, doc in enumerate(relevant_docs):
