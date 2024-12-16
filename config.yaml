@@ -1,0 +1,54 @@
+# Vector Store Configuration
+VECTOR_STORE:
+  CHUNK_SIZE: 2048
+  SEARCH_PARAMS:
+    metric_type: "IP"
+    params:
+      nprobe: 10
+
+
+# Markdown Separators for Text Parsing
+MARKDOWN_SEPARATORS:
+  - "\n#{1,6} "
+  - "```\n"
+  - "\n***+\n"
+  - "\n---+\n"
+  - "\n___+\n"
+  - "\n\n"
+  - "\n"
+  - " "
+  - ""
+
+# List of Files to Process
+FILE_LIST:
+  - '.\\data\\knowledge.txt'
+  - '.\\data\\product_description.txt'
+  - '.\\data\\product_list.txt'
+  - '.\\data\\QA.txt'
+  - '.\\data\\review.txt'
+ 
+# Local Model Path
+MODEL_ROOT_PATH: "C:/Users/fancy/.cache/huggingface/hub/"
+
+# Dense Embedding Configuration
+DENSE_EMBEDDING:
+  MODEL_NAME: "text-embedding-3-large"
+  MODEL_PATH: "C:/Users/fancy/.cache/huggingface/hub/models--Alibaba-NLP--gte-large-en-v1.5/snapshots/104333d6af6f97649377c2afbde10a7704870c7b"
+
+# Sparse Embedding Configuration
+SPARSE_EMBEDDING:
+  MODEL_NAME: 'BM25'
+  MODEL_PATH: ''
+
+# Reranker Configuration
+RERANKER:
+  MODEL_NAME: 'BAAI/bge-reranker-v2-m3'
+  MODEL_PATH: "C:/Users/fancy/.cache/huggingface/hub/models--jinaai--jina-colbert-v2/snapshots/4cf816e5e2b03167b132a3c847a9ecd48ba708e1"
+
+# OpenAI Configuration
+
+OPENAI:
+  # CHANGE INTO YOUR PERSONAL API INFO
+  URL: 'https://xiaoai.plus/v1'
+  APIKEY: 'sk-klCkyV3jLxj47iQCtAiQj8XViMk3LBeokH8SmZE3gTAR3bTu'
+  MODEL_NAME: 'gpt-4o'

@@ -3,6 +3,8 @@ from typing import List
 from langchain_milvus import Milvus
 from langchain_community.document_loaders import TextLoader
 from milvus_model.sparse.bm25 import build_default_analyzer, BM25EmbeddingFunction
+from pymilvus.exceptions import SchemaNotReadyException
+from sqlalchemy.orm.collections import collection
 from tqdm import tqdm
 from models import get_embedding_model,get_embedding_name
 from configs import SEARCH_PARAMS, CHUNK_SIZE
@@ -13,8 +15,22 @@ Collection,connections,
 )
 from pymilvus import MilvusClient
 from vector_store_interface import VectorStore
-from utils import split_documents, txt_to_list, split_text_files_utils, show_doc_content
+from utils import split_documents, txt_to_list, split_text_files_utils, show_doc_content, get_data
 import os
+
+def has_collection(collection_name):
+    try:
+        connections.connect('default', host="localhost", port=19530)
+        collection = Collection(collection_name)
+        collection.load()
+        return True
+    except SchemaNotReadyException:
+        return False
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        return False
+
+
 
 class SparseVectorStore(VectorStore):
     """Class of Sparse Vector"""
@@ -24,16 +40,15 @@ class SparseVectorStore(VectorStore):
         self.embedding_model = get_embedding_model(self.db_type)
         self.embedding_name = get_embedding_name(self.db_type)
         self.collection_name = collection_name
-        connection = {"host": ip, "port": port, "db_name": db_name}
-        self.vector_store = Milvus(embedding_function=self.embedding_model,
-                                          collection_name=self.collection_name,
-                                          auto_id=True,
-                                          connection_args=connection,
-                                          primary_field='ID',
-                                          drop_old=is_new,
-                                          text_field='Content',
-                                   vector_field='sparse_vector')
-        logger.success("Connected with Sparse Vector Database")
+        self.collection = None
+        if has_collection(collection_name):
+            connections.connect(db_name, host="localhost", port=port)
+            self.client = MilvusClient(
+                uri="http://localhost:19530"
+            )
+            self.collection=Collection(self.collection_name)
+            self.collection.load()
+            logger.success("Connected with Sparse Vector Database")
 
 
     def split_text_files(self,txt_files: list[any]) -> List[LangchainDocument]:
@@ -44,30 +59,33 @@ class SparseVectorStore(VectorStore):
     def search_documents(self, question, expr=None, top_k=5, distance=SEARCH_PARAMS):
         logger.debug(f'search documents matched with "{question}" in sparse database')
         # 查询
-        connections.connect("default", host="localhost", port="19530")
-        client = MilvusClient(
-            uri="http://localhost:19530"
-        )
-        collection = Collection(self.collection_name)  # Get an existing collection.
-        collection.load()
+        # connections.connect("default", host="localhost", port="19530")
+        # client = MilvusClient(
+        #     uri="http://localhost:19530"
+        # )
+        # collection = Collection(self.collection_name)  # Get an existing collection.
+        # collection.load()
         query_embeddings = self.embedding_model.encode_queries([question])
         try:
-            results = client.search(
-                collection_name=self.collection_name,
-                data=query_embeddings,
-                anns_field="sparse_vector",
-                limit=top_k,
-                search_params={"metric_type": "IP", "params": {}},
-                output_fields=["Content"])
+            if self.collection is not None:
+                results = self.client.search(
+                    collection_name=self.collection_name,
+                    data=query_embeddings,
+                    anns_field="sparse_vector",
+                    limit=top_k,
+                    search_params={"metric_type": "IP", "params": {}},
+                    output_fields=["Content"])
+            else:
+                raise ValueError("collection is not defined")
         except Exception as e:
-            logger.error("search failed")
+            logger.error("search failed with: {}".format(e))
             results = []
         res = []
-        for result in results:
+        for result in results[0]:
             if len(list(results[0])) != 0:
-                doc = LangchainDocument(page_content=dict(list(result)[0].get("entity")).get("Content"),
+                doc = LangchainDocument(page_content=result.get("entity").get("Content"),
                                   metadatas = {})
-                distance = result[0].get("distance")
+                distance = result.get("distance")
                 res.append((doc,distance))
         logger.info(f"Found {len(res)} results in Sparse Vector Database")
         return res
@@ -151,32 +169,29 @@ class DenseVectorStore(VectorStore):
 
 
 if __name__ == '__main__':
-    folder_path = '.\data'
-    txt= []
-    for filename in os.listdir(folder_path):
-        if filename.endswith('.txt'):
-            file_path = os.path.join(folder_path, filename)
-            txt.append(file_path)
-    print(txt)
 
+    print(has_collection('MC_SPARSE'))
+    # print(connections.has_connection('MC_SPARSE'))
 
+###inserting data###
+    # txt = get_data()
+    # test dense
 
-    # #test dense
-    # vector_db = DenseVectorStore('localhost', '19530', 'default','mcdense_test',
+    # vector_db = DenseVectorStore('localhost', '19530', 'default','MC_DENSE',
     #                               is_new=False)
-    # # d = vector_db.split_text_files(txt)
-    # # print(d)
-    # # show_doc_content(d)
-    # #
-    # # for doc in tqdm(d, total=len(d)):
-    # #     vector_db.insert_documents([doc])
+    # d = vector_db.split_text_files(txt)
+    # print(d)
+    # show_doc_content(d)
+    # # #
+    # for doc in tqdm(d, total=len(d)):
+    #     vector_db.insert_documents([doc])
     # r = vector_db.search_documents("Where did first McDonald’s in mainland China opened",None,5)
     # print("results:", r)
 
 
     # test sparse
-    vector_db = SparseVectorStore('localhost', '19530', 'default', 'mcsparse_test',
-                                   is_new=False)
+    # vector_db = SparseVectorStore('localhost', '19530', 'default', 'MC_SPARSE',
+    #                                is_new=False)
     # doc = vector_db.split_text_files(txt)
     # print(len(doc))
     # # for d in doc:
@@ -184,8 +199,8 @@ if __name__ == '__main__':
     # #     print(d)
     #
     # vector_db.insert_documents(doc)
-    r=vector_db.search_documents("what is the price of Filet-O-Fish",None,5)
-    print("results:", r)
+    # # r=vector_db.search_documents("McDonald",None,5)
+    # # print("results:", r)
 
 
 

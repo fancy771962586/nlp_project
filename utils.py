@@ -3,19 +3,21 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from tqdm import tqdm
 from transformers import AutoTokenizer
 from loguru import logger
-from configs import RERANKER_NAME,DENSE_EMBEDDING_MODEL_PATH,DENSE_EMBEDDING_MODEL_NAME,FILE_LIST, USR_PROMPT,SYS_PROMPT
+from configs import RERANKER_NAME,DENSE_EMBEDDING_MODEL_PATH,DENSE_EMBEDDING_MODEL_NAME,FILE_LIST
+from prompt import USR_PROMPT,SYS_PROMPT
 from langchain.docstore.document import Document as LangchainDocument
 from typing import List
 from configs import MARKDOWN_SEPARATORS
 import re
+import os
 
 
 def extract_txt(text):
     # 使用正则表达式匹配数字 12123
     if 'User' in text:
-        match = re.search(r"<div class='message'>(.*?)</div>", text, re.DOTALL)
+        match = re.search(r"<div class='user-label'><b>User</b></div>\n<div class='message user'>(.*?)</div>", text, re.DOTALL)
     else:
-        match = re.search(r"<div class='label'><b>McSmartBot</b></div><div class='message'>(.*?)</div>", text, re.DOTALL)
+        match = re.search(r"<div class='assistant-label'><b>McSmartBot</b></div>\n<div class='message assistant'>(.*?)</div>", text, re.DOTALL)
     if match:
         return match.group(1)
     return None
@@ -27,8 +29,7 @@ def save_history(chat_history, turn):
         # history = json.loads(history)
         messages.append({'role':history.get('role'),'content':extract_txt(history.get('content'))})
         print(messages)
-    return messages[-turn*2:]
-
+    return messages[-turn*2:-1]
 
 
 def history_to_str(messages):
@@ -40,9 +41,6 @@ def history_to_str(messages):
             text =''
         msg += '{}: {}\n'.format(role, text)
     return msg
-
-
-
 
 
 def split_text_files_utils(txt_files: list[any]) -> List[LangchainDocument]:
@@ -101,26 +99,18 @@ def split_documents(chunk_size: int, knowledge_base: List,db_type,model_name) ->
     """
     logger.info("Current chunk size: {}".format(chunk_size))
     docs_processed = []
+    text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+        model_name='gpt-4o',
+        chunk_size=chunk_size,
+        chunk_overlap=int(chunk_size / 10),
+        add_start_index=False,
+        strip_whitespace=True,
+        separators=MARKDOWN_SEPARATORS,
+    )
     if db_type == 'dense':
-        text_splitter = RecursiveCharacterTextSplitter.from_huggingface_tokenizer(
-            AutoTokenizer.from_pretrained(model_name),
-            chunk_size=chunk_size,
-            chunk_overlap=int(chunk_size / 10),
-            add_start_index=False,
-            strip_whitespace=True,
-            separators=MARKDOWN_SEPARATORS,
-        )
         for doc in tqdm(knowledge_base):
             docs_processed += text_splitter.split_documents([doc])
     elif db_type == 'sparse':
-        text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-            model_name = 'gpt-4o',
-            chunk_size=chunk_size,
-            chunk_overlap=int(chunk_size / 10),
-            add_start_index=False,
-            strip_whitespace=True,
-            separators=MARKDOWN_SEPARATORS,
-        )
         for doc in tqdm(knowledge_base):
             docs_processed += text_splitter.split_text(doc)
 
@@ -137,7 +127,6 @@ def convert_to_langchain_documents(docs):
     return langchain_docs
 
 
-
 def build_prompt(context, history, question):
     sys_prompt = SYS_PROMPT.format(context=context)
     user_prompt = USR_PROMPT.format(history=history, question=question)
@@ -148,7 +137,8 @@ def build_prompt(context, history, question):
                 ]
             }
 
-    return final_prompt, sys_prompt
+    return final_prompt, sys_prompt, user_prompt
+
 
 def show_doc_content(relevant_docs):
     for i, doc in enumerate(relevant_docs):
@@ -156,4 +146,11 @@ def show_doc_content(relevant_docs):
         print(doc.page_content)
 
 
-
+def get_data():
+    folder_path = '.\data'
+    txt= []
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.txt'):
+            file_path = os.path.join(folder_path, filename)
+            txt.append(file_path)
+    return txt
