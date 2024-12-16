@@ -7,7 +7,7 @@ To get started with this NLP project, simply follow these steps:
 Use the following command to clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/fancy771962586/nlp_project.git
 ```
 ## Install Dependencies:
 Make sure you have Python installed on your system. The project may require certain Python packages. You can install these dependencies by running:
