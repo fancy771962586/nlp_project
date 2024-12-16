@@ -77,11 +77,11 @@ def chat_llm(request_body: RequestBody):
 
 
 @app.post("/search")
-def hybrid_search(ques:Body):
+async def hybrid_search(ques:Body):
     question = ques.question
     top_k = 5
     start_time = time.time()
-    res = mixed_search(question, sparse_db, dense_db)
+    res = await mixed_search(question, sparse_db, dense_db)
     res = remove_duplicated_text(res)
     logger.info(f"There are total {len(res)} documents after removing duplicates")
     logger.debug('reranking the result, current top k:{}'.format(top_k))
